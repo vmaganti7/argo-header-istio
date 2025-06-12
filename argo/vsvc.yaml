@@ -4,9 +4,7 @@ metadata:
   name: sample-app-vsvc
 spec:
   hosts:
-  - sample-app.example.com
-  gateways:
-  - sample-app-gateway
+  - argoistio.xfm.sws.siemens.com
   http:
   - name: primary
     match:
@@ -16,11 +14,13 @@ spec:
     route:
     - destination:
         host: sample-app-canary
-        port:
-          number: 80
+        subset: canary
       weight: 0
     - destination:
         host: sample-app-stable
-        port:
-          number: 80
+        subset: stable
       weight: 100
+  - route:
+    - destination:
+        host: sample-app-stable
+        subset: stable
