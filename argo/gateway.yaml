@@ -1,7 +1,7 @@
 apiVersion: networking.istio.io/v1alpha3
 kind: Gateway
 metadata:
-  name: my-application-gateway
+  name: sample-app-gateway
 spec:
   selector:
     istio: ingressgateway
@@ -11,4 +11,4 @@ spec:
       name: http
       protocol: HTTP
     hosts:
-    - my-application.xfm.sws.siemens.com
+    - argoistio.xfm.sws.siemens.com
