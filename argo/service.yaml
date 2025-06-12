@@ -1,23 +1,23 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: sample-app-canary
+  name: my-application-stable
 spec:
   ports:
   - port: 80
-    targetPort: 80
-    protocol: TCP
+    targetPort: 8080
   selector:
-    app: sample-app
+    app: my-application
+    # Will match stable pods
 ---
 apiVersion: v1
 kind: Service
 metadata:
-  name: sample-app-stable
+  name: my-application-canary
 spec:
   ports:
   - port: 80
-    targetPort: 80
-    protocol: TCP
+    targetPort: 8080
   selector:
-    app: sample-app
+    app: my-application
+    # Will match canary pods
