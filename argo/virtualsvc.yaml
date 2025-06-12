@@ -1,0 +1,23 @@
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata:
+  name: header-based-vsvc
+spec:
+  hosts:
+  - header-based-app
+  http:
+  - name: primary
+    match:
+    - headers:
+        x-version:
+          exact: "canary"
+    route:
+    - destination:
+        host: header-based-canary
+        port:
+          number: 8080
+  - route:
+    - destination:
+        host: header-based-stable
+        port:
+          number: 8080
