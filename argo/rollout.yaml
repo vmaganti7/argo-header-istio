@@ -1,38 +1,25 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Rollout
 metadata:
-  name: sample-app-rollout
+  name: my-application
 spec:
-  replicas: 5
-  selector:
-    matchLabels:
-      app: sample-app
-  template:
-    metadata:
-      labels:
-        app: sample-app
-    spec:
-      containers:
-      - name: sample-app
-        image: nginx:1.19.0
-        ports:
-        - containerPort: 80
+  replicas: 4
   strategy:
     canary:
-      canaryService: sample-app-canary
-      stableService: sample-app-stable
+      canaryService: my-application-canary
+      stableService: my-application-stable
       trafficRouting:
         istio:
           virtualService:
-            name: sample-app-vsvc
+            name: my-application-vsvc
             routes:
-            - primary
+              - primary
       steps:
       - setWeight: 20
-      - pause: {duration: 1h}
+      - pause: {}
       - setWeight: 40
-      - pause: {duration: 1h}
+      - pause: {}
       - setWeight: 60
-      - pause: {duration: 1h}
+      - pause: {}
       - setWeight: 80
-      - pause: {duration: 1h}
+      - pause: {}
