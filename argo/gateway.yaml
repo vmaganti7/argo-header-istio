@@ -11,4 +11,4 @@ spec:
       name: http
       protocol: HTTP
     hosts:
-    - my-application.sws.siemens.com
+    - my-application.xfm.sws.siemens.com
