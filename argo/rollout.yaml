@@ -1,0 +1,29 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Rollout
+metadata:
+  name: header-based-rollout
+spec:
+  replicas: 4
+  selector:
+    matchLabels:
+      app: header-based-app
+  template:
+    metadata:
+      labels:
+        app: header-based-app
+    spec:
+      containers:
+      - name: header-based-app
+        image: your-app-image:v1
+        ports:
+        - containerPort: 8080
+  strategy:
+    canary:
+      canaryService: header-based-canary
+      stableService: header-based-stable
+      trafficRouting:
+        istio:
+          virtualService:
+            name: header-based-vsvc
+            routes:
+            - primary
