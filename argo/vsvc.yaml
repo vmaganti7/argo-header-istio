@@ -1,26 +1,26 @@
 apiVersion: networking.istio.io/v1alpha3
 kind: VirtualService
 metadata:
-  name: my-application-vsvc
+  name: sample-app-vsvc
 spec:
   hosts:
-  - my-application.example.com
+  - sample-app.example.com
   gateways:
-  - my-application-gateway
+  - sample-app-gateway
   http:
-  - match:
+  - name: primary
+    match:
     - headers:
-        x-canary:
-          exact: "true"
+        x-env:
+          exact: canary
     route:
     - destination:
-        host: my-application-canary
+        host: sample-app-canary
         port:
           number: 80
-      weight: 100
-  - route:
+      weight: 0
     - destination:
-        host: my-application-stable
+        host: sample-app-stable
         port:
           number: 80
       weight: 100
