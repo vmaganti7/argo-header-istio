@@ -16,10 +16,10 @@ spec:
               - primary
       steps:
       - setWeight: 20
-      - pause: {}
+      - pause: { }
       - setWeight: 40
-      - pause: {}
+      - pause: { }
       - setWeight: 60
-      - pause: {}
+      - pause: { }
       - setWeight: 80
-      - pause: {}
+      - pause: { }
