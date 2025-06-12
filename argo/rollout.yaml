@@ -4,6 +4,19 @@ metadata:
   name: my-application
 spec:
   replicas: 4
+  selector:
+    matchLabels:
+      app: my-application
+  template:
+    metadata:
+      labels:
+        app: my-application
+    spec:
+      containers:
+      - name: my-application
+        image: nginx:latest  # This is your container image version
+        ports:
+        - containerPort: 8080
   strategy:
     canary:
       canaryService: my-application-canary
@@ -16,10 +29,12 @@ spec:
               - primary
       steps:
       - setWeight: 20
-      - pause: { }
+      - pause: {}
       - setWeight: 40
-      - pause: { }
+      - pause: {}
       - setWeight: 60
-      - pause: { }
+      - pause: {}
       - setWeight: 80
-      - pause: { }
+      - pause: {}
+      - setWeight: 100
+      - pause: {}
