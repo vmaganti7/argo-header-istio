@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
       - name: my-application
-        image: nginx:latest  # This is your container image version
+        image: nginx:1.28.0  # This is your container image version
         ports:
         - containerPort: 8080
   strategy:
