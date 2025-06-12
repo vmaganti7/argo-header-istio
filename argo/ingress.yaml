@@ -9,6 +9,8 @@ metadata:
     alb.ingress.kubernetes.io/listen-ports: '[{"HTTPS":443}]'
     alb.ingress.kubernetes.io/ssl-policy: ELBSecurityPolicy-FS-1-2-Res-2020-10
     alb.ingress.kubernetes.io/scheme: internal
+    alb.ingress.kubernetes.io/force-target-group-creation: "true"
+    alb.ingress.kubernetes.io/target-group-name: argoistio-tg
     external-dns.alpha.kubernetes.io/hostname: argoistio.xfm.sws.siemens.com
     alb.ingress.kubernetes.io/target-group-attributes: >-
       deregistration_delay.timeout_seconds=120
