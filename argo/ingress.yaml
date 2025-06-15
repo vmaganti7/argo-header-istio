@@ -25,6 +25,6 @@ spec:
         pathType: Prefix
         backend:
           service:
-            name: istio-ingressgateway
+            name: istio-private-ingressgateway
             port:
               number: 80
