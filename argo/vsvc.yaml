@@ -6,7 +6,7 @@ spec:
   hosts:
   - argoistio.xfm.sws.siemens.com
   gateways:
-  - sample-app-gateway
+  - private-gateway
   http:
   - name: primary
     match:
