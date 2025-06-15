@@ -4,7 +4,7 @@ metadata:
   name: sample-app-vsvc
 spec:
   hosts:
-  - sample-app.example.com
+  - argoistio.xfm.sws.siemens.com
   gateways:
   - sample-app-gateway
   http:
