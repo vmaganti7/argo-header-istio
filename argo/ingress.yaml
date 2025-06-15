@@ -16,6 +16,8 @@ metadata:
       deregistration_delay.timeout_seconds=120
     alb.ingress.kubernetes.io/target-type: ip
     kubernetes.io/ingress.class: alb
+    alb.ingress.kubernetes.io/actions.forward-single: >
+      {"type":"forward","targetGroupARN": "arn:aws:elasticloadbalancing:eu-central-1:238720913587:targetgroup/k8s-ingressg-istiopri-6245b06da8/ad7a593de8e69ec3"}
 spec:
   rules:
   - host: argoistio.xfm.sws.siemens.com
