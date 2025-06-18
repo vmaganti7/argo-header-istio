@@ -11,4 +11,13 @@ spec:
       name: http
       protocol: HTTP
     hosts:
-    - argoistio.xfm.sws.siemens.com
+    - "*"
+  - port:
+      number: 443
+      name: https
+      protocol: HTTPS
+    tls:
+      mode: SIMPLE
+      credentialName: tls-secret
+    hosts:
+    - "*"  
